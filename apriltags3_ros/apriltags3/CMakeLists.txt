@@ -13,8 +13,8 @@ catkin_package(
   CATKIN_DEPENDS
 )
 
-include_directories(include include/apriltags/common)
-include_directories(include include/apriltags)
+include_directories(include include/apriltag/common)
+include_directories(include include/apriltag)
 include_directories(include
   ${catkin_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
@@ -22,37 +22,37 @@ include_directories(include
 )
 
 add_library(apriltags3
-  include/apriltags/apriltag.c
-  include/apriltags/apriltag_pose.c
-  include/apriltags/tag25h9.c
-  include/apriltags/tagCircle49h12.c
-  include/apriltags/tagStandard52h13.c
-  include/apriltags/apriltag_quad_thresh.c
-  include/apriltags/tag36h11.c
-  include/apriltags/tagCustom48h12.c
-  include/apriltags/tag16h5.c
-  include/apriltags/tagCircle21h7.c
-  include/apriltags/tagStandard41h12.c
+  include/apriltag/apriltag.c
+  include/apriltag/apriltag_pose.c
+  include/apriltag/tag25h9.c
+  include/apriltag/tagCircle49h12.c
+  include/apriltag/tagStandard52h13.c
+  include/apriltag/apriltag_quad_thresh.c
+  include/apriltag/tag36h11.c
+  include/apriltag/tagCustom48h12.c
+  include/apriltag/tag16h5.c
+  include/apriltag/tagCircle21h7.c
+  include/apriltag/tagStandard41h12.c
 
-  include/apriltags/common/g2d.c
-  include/apriltags/common/getopt.c
-  include/apriltags/common/homography.c
-  include/apriltags/common/image_u8.c
-  include/apriltags/common/image_u8x3.c
-  include/apriltags/common/image_u8x4.c
-  include/apriltags/common/matd.c
-  include/apriltags/common/pam.c
-  include/apriltags/common/pjpeg.c
-  include/apriltags/common/pjpeg-idct.c
-  include/apriltags/common/pnm.c
-  include/apriltags/common/string_util.c
-  include/apriltags/common/svd22.c
-  include/apriltags/common/time_util.c
-  include/apriltags/common/unionfind.c
-  include/apriltags/common/workerpool.c
-  include/apriltags/common/zarray.c
-  include/apriltags/common/zhash.c
-  include/apriltags/common/zmaxheap.c
+  include/apriltag/common/g2d.c
+  include/apriltag/common/getopt.c
+  include/apriltag/common/homography.c
+  include/apriltag/common/image_u8.c
+  include/apriltag/common/image_u8x3.c
+  include/apriltag/common/image_u8x4.c
+  include/apriltag/common/matd.c
+  include/apriltag/common/pam.c
+  include/apriltag/common/pjpeg.c
+  include/apriltag/common/pjpeg-idct.c
+  include/apriltag/common/pnm.c
+  include/apriltag/common/string_util.c
+  include/apriltag/common/svd22.c
+  include/apriltag/common/time_util.c
+  include/apriltag/common/unionfind.c
+  include/apriltag/common/workerpool.c
+  include/apriltag/common/zarray.c
+  include/apriltag/common/zhash.c
+  include/apriltag/common/zmaxheap.c
 
   )
 target_link_libraries(apriltags3
