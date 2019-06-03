@@ -43,6 +43,7 @@ class detector_node():
         self.camera_intrinsics = [337.3092553690036,336.85901913795016,314.1137093251905,217.29382862441514]    #Initialisation of camera parameters with defaults
         self.tag_size = 0.065   #default tagsize
         self.sequence_id = 0
+        self.rotation_quaternion = [1,0,0,0]
 
     #Detection and publication of detections
     def detect_ap(self,msg):
@@ -79,7 +80,14 @@ class detector_node():
             detectedtag.pose.pose.pose.position.z = tag.pose_t[2]
             
             #Orientation
-            rot=ap3.rot2quat(tag.pose_R)
+            #ATTENTION: The old Apriltags detection node also changed the orientation by -90 degrees around the x-axis.
+            #           To understand this shift in coordinates, the Website https://eater.net/quaternions/video/intro
+            #           illustrates this shift beautifully when the first operation is set to [1,0,0,0] (w,x,y,z) and
+            #           the second is set to [0,1,0,0].
+            #           Quaternions in this node are represented by a list. Convention: [x,y,z,w] (utils.py).
+
+            rot = ap3.rot2quat(tag.pose_R)
+            rot = ap3.quatmul(rot,self.rotation_quaternion)
             detectedtag.pose.pose.pose.orientation.x = rot[0]
             detectedtag.pose.pose.pose.orientation.y = rot[1]
             detectedtag.pose.pose.pose.orientation.z = rot[2]
