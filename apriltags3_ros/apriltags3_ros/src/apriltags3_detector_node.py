@@ -121,7 +121,6 @@ class detector_node():
         self.camera_intrinsics[2] = msg.K[2]
         self.camera_intrinsics[3] = msg.K[5]
 
-        rospy.loginfo("Camera information recieved")
 
         return
 
