@@ -1,3 +1,5 @@
+#Various functions to easily manipulate quaternions.
+
 import numpy as np
 
 # Changes rotation representation from a 3x3 rotation matrix to equivalent quaternion.

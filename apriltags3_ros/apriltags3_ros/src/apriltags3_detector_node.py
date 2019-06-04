@@ -80,11 +80,15 @@ class detector_node():
             detectedtag.pose.pose.pose.position.z = tag.pose_t[2]
             
             #Orientation
-            #ATTENTION: The old Apriltags detection node also changed the orientation by -90 degrees around the x-axis.
+            #ATTENTION: The old Apriltags detection node also changed the orientation by +90 degrees around the x-axis,
+            #           and rotates the zero position of the tag.
             #           To understand this shift in coordinates, the Website https://eater.net/quaternions/video/intro
             #           illustrates this shift beautifully when the first operation is set to [1,0,0,0] (w,x,y,z) and
             #           the second is set to [0,1,0,0].
             #           Quaternions in this node are represented by a list. Convention: [x,y,z,w] (utils.py).
+            #           Frame of reference before:  x right, y down, z in the tag
+            #           Frame of reference after:   x right, y in the tag, z up
+            #           Transformation r_new = r_old*[1,0,0,0] ;where [x,y,z,w] and * is vectorproduct
 
             rot = ap3.rot2quat(tag.pose_R)
             rot = ap3.quatmul(rot,self.rotation_quaternion)
