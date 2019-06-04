@@ -34,7 +34,7 @@ class detector_node():
         self.image_rect = rospy.Subscriber('camera_node/image/rect', Image, self.detect_ap)
         self.camera_info = rospy.Subscriber('camera_node/raw_camera_info', CameraInfo, self.Camera_params)
         self.switch_sub = rospy.Subscriber('apriltag_detector_node/switch', BoolStamped, self.trigger)
-        self.detections = rospy.Publisher('tag_detections', AprilTagDetectionArray)
+        self.detections = rospy.Publisher('tag_detections', AprilTagDetectionArray, queue_size = 1)
 
         # Variables & Constants
         #TODO maybe add a configfile if necessary
@@ -120,6 +120,8 @@ class detector_node():
         self.camera_intrinsics[1] = msg.K[4]
         self.camera_intrinsics[2] = msg.K[2]
         self.camera_intrinsics[3] = msg.K[5]
+
+        rospy.loginfo("Camera information recieved")
 
         return
 
